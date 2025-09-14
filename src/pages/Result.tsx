@@ -152,7 +152,7 @@ const Result = () => {
   };
 
   return (
-    <div className={`min-h-screen ${getBackgroundColor()} flex flex-col`}>
+    <div className={`min-h-screen consumer-bg flex flex-col`}>
       <div className="p-4">
         <Button
           variant="outline"
@@ -165,7 +165,8 @@ const Result = () => {
       </div>
 
       <div className="flex-1 flex flex-col items-center justify-center p-4">
-        <Card className="w-full max-w-md shadow-medium border-0 mb-6 overflow-hidden scanner-container">
+        <div className="relative z-10 w-full flex flex-col items-center justify-center">
+        <Card className="w-full max-w-md shadow-medium border-0 mb-6 overflow-hidden scanner-container glass-panel">
           <div className={`p-6 ${result === 'genuine' ? 'bg-primary/5' : result === 'fake' ? 'bg-destructive/5' : 'bg-muted/10'}`}>
             {getResultContent()}
           </div>
@@ -226,6 +227,7 @@ const Result = () => {
             <Shield className="w-4 h-4 mr-2" />
             Return to Verification Portal
           </Button>
+        </div>
         </div>
       </div>
     </div>

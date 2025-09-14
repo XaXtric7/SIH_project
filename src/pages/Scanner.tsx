@@ -93,7 +93,8 @@ const Scanner = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-subtle flex flex-col">
+    <div className="min-h-screen consumer-bg flex flex-col">
+      <div className="relative z-10 w-full flex flex-col">
       <div className="p-4">
         <Button
           variant="outline"
@@ -115,7 +116,7 @@ const Scanner = () => {
           <p className="text-muted-foreground mt-1">Position the QR code within the frame</p>
         </div>
 
-        <Card className="w-full max-w-md overflow-hidden shadow-medium border-0 mb-6 scanner-container">
+        <Card className="w-full max-w-md overflow-hidden shadow-medium border-0 mb-6 scanner-container glass-panel">
           {error ? (
             <div className="p-6 text-center text-destructive">
               <p>{error}</p>
@@ -148,6 +149,7 @@ const Scanner = () => {
             <li>• Ensure the entire QR code is within the frame</li>
           </ul>
         </div>
+      </div>
       </div>
     </div>
   );

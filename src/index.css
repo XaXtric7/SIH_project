@@ -110,3 +110,74 @@ All colors MUST be HSL.
     @apply bg-background text-foreground;
   }
 }
+
+@layer components {
+  /* Verification badge styling with proper alignment */
+  .verification-badge {
+    @apply inline-flex items-center justify-center gap-1.5 px-3 py-1 bg-primary/10 text-primary text-xs font-medium rounded-full;
+  }
+  
+  /* Glassmorphism effect for cards and panels */
+  .glass-panel {
+    @apply bg-white/70 backdrop-blur-md border border-white/20 shadow-lg;
+  }
+  
+  /* Pulse animation */
+  .pulse-animation {
+    animation: pulse 2s infinite;
+  }
+  
+  /* Scanner container with security theme */
+  .scanner-container {
+    @apply relative overflow-hidden;
+  }
+  
+  /* Background image styling with reduced opacity */
+  .consumer-bg {
+    background-image: url('/consumer.jpg');
+    background-size: cover;
+    background-position: center;
+    @apply relative;
+  }
+  
+  .consumer-bg::before {
+    content: '';
+    @apply absolute inset-0 bg-background/90 backdrop-blur-sm;
+  }
+  
+  .manufacturer-bg {
+    background-image: url('/manufacturer.jpg');
+    background-size: cover;
+    background-position: center;
+    @apply relative;
+  }
+  
+  .manufacturer-bg::before {
+    content: '';
+    @apply absolute inset-0 bg-background/90 backdrop-blur-sm;
+  }
+  
+  .main-bg {
+    background-image: url('/main.jpg');
+    background-size: cover;
+    background-position: center;
+    @apply relative;
+  }
+  
+  .main-bg::before {
+    content: '';
+    @apply absolute inset-0 bg-background/90 backdrop-blur-sm;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(var(--primary), 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(var(--primary), 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(var(--primary), 0);
+  }
+}

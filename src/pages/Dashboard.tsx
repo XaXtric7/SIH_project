@@ -86,7 +86,8 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-subtle">
+    <div className="min-h-screen manufacturer-bg p-4 md:p-8">
+      <div className="relative z-10 w-full">
       <div className="container max-w-4xl mx-auto py-8 px-4">
         <div className="flex items-center justify-between mb-8">
           <div>
@@ -101,7 +102,7 @@ const Dashboard = () => {
           </div>
         </div>
 
-        <Card className="shadow-medium border-0">
+        <Card className="shadow-medium border-0 glass-panel">
           <CardHeader>
             <CardTitle className="text-xl font-semibold">Product Information</CardTitle>
             <CardDescription>
@@ -187,6 +188,7 @@ const Dashboard = () => {
             </form>
           </CardContent>
         </Card>
+      </div>
       </div>
     </div>
   );

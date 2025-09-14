@@ -7,14 +7,14 @@ const Index = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gradient-subtle p-4">
-      <div className="w-full max-w-3xl">
+    <div className="flex min-h-screen items-center justify-center main-bg p-4">
+      <div className="relative z-10 w-full max-w-3xl">
         <div className="text-center mb-8">
           <div className="flex justify-center mb-4">
             <div className="verification-badge mb-4">
-              <Shield className="w-4 h-4" />
-              <span>Secure Verification</span>
-            </div>
+            <Shield className="w-4 h-4" />
+            <span>Secure Verification</span>
+          </div>
           </div>
           <h1 className="text-4xl font-bold text-foreground">QR Factory</h1>
           <p className="text-xl text-muted-foreground mt-2">Secure Product Authentication System</p>
@@ -31,7 +31,7 @@ const Index = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <Card className="shadow-medium border-0 hover:shadow-lg transition-smooth pulse-animation">
+          <Card className="shadow-medium border-0 hover:shadow-lg transition-smooth pulse-animation glass-panel">
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <Factory className="w-5 h-5 text-primary" />
@@ -57,7 +57,7 @@ const Index = () => {
             </CardContent>
           </Card>
 
-          <Card className="shadow-medium border-0 hover:shadow-lg transition-smooth scanner-container">
+          <Card className="shadow-medium border-0 hover:shadow-lg transition-smooth scanner-container glass-panel">
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <ShieldCheck className="w-5 h-5 text-accent" />

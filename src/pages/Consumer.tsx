@@ -50,7 +50,8 @@ const Consumer = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-subtle flex flex-col items-center justify-center p-4">
+    <div className="min-h-screen consumer-bg flex flex-col items-center justify-center p-4">
+      <div className="relative z-10 w-full flex flex-col items-center justify-center">
       <div className="w-full max-w-md text-center mb-8">
         <div className="verification-badge mx-auto mb-4">
           <Shield className="w-4 h-4" />
@@ -63,7 +64,7 @@ const Consumer = () => {
         <p className="text-muted-foreground mt-2">Scan QR codes to verify product authenticity</p>
       </div>
 
-      <Card className="w-full max-w-md shadow-medium border-0 mb-6 scanner-container">
+      <Card className="w-full max-w-md shadow-medium border-0 mb-6 scanner-container glass-panel">
         <CardHeader className="text-center">
           <CardTitle className="text-xl font-semibold flex items-center justify-center gap-2">
             <QrCode className="w-5 h-5 text-primary" />
@@ -153,6 +154,7 @@ const Consumer = () => {
             <span>Secure Results</span>
           </div>
         </div>
+      </div>
       </div>
     </div>
   );
