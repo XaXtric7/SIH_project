@@ -60,7 +60,7 @@ bun install
 npm run dev
 # or
 bun run dev
-
+```
 The application will be available at `http://localhost:8080` 🌐
 
 ## Usage 🛠️
@@ -100,7 +100,7 @@ bun run build
 npm run preview
 # or
 bun run preview
-
+```
 ## Security Features 🔐
 
 - **Unique Identifiers 🆔**: Each QR code contains a unique product ID to prevent duplication
