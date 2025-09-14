@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Alert, AlertTitle, AlertDescription } from '@/components/ui/alert';
-import { ArrowLeft, CheckCircle2, XCircle, AlertTriangle, Package } from 'lucide-react';
+import { ArrowLeft, CheckCircle2, XCircle, AlertTriangle, Package, Shield, QrCode } from 'lucide-react';
 
 interface QRData {
   productName: string;
@@ -64,38 +64,80 @@ const Result = () => {
       case 'genuine':
         return (
           <div className="text-center space-y-4">
-            <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto">
-              <CheckCircle2 className="w-12 h-12 text-green-600" />
+            <div className="verification-badge mx-auto mb-2">
+              <Shield className="w-4 h-4" />
+              <span>Verification Complete</span>
             </div>
-            <AlertTitle className="text-2xl font-bold text-green-600">Genuine Product</AlertTitle>
-            <AlertDescription className="text-green-600">
+            <div className="w-24 h-24 bg-primary/10 rounded-full flex items-center justify-center mx-auto pulse-animation">
+              <CheckCircle2 className="w-16 h-16 text-primary" />
+            </div>
+            <AlertTitle className="text-2xl font-bold text-primary mt-4">Genuine Product</AlertTitle>
+            <AlertDescription className="text-muted-foreground">
               This product is authentic and has been verified for the first time.
             </AlertDescription>
+            <div className="grid grid-cols-2 gap-2 mt-4 text-sm">
+              <div className="bg-primary/5 p-3 rounded-lg">
+                <div className="font-medium text-primary">First Scan</div>
+                <div className="text-muted-foreground">Verified Original</div>
+              </div>
+              <div className="bg-primary/5 p-3 rounded-lg">
+                <div className="font-medium text-primary">Secure</div>
+                <div className="text-muted-foreground">Blockchain Verified</div>
+              </div>
+            </div>
           </div>
         );
       case 'fake':
         return (
           <div className="text-center space-y-4">
-            <div className="w-20 h-20 bg-red-100 rounded-full flex items-center justify-center mx-auto">
-              <AlertTriangle className="w-12 h-12 text-red-600" />
+            <div className="verification-badge mx-auto mb-2 bg-destructive/10 text-destructive border-destructive/20">
+              <AlertTriangle className="w-4 h-4" />
+              <span>Verification Alert</span>
             </div>
-            <AlertTitle className="text-2xl font-bold text-red-600">Warning! This product may be fake</AlertTitle>
-            <AlertDescription className="text-red-600">
+            <div className="w-24 h-24 bg-destructive/10 rounded-full flex items-center justify-center mx-auto">
+              <AlertTriangle className="w-16 h-16 text-destructive" />
+            </div>
+            <AlertTitle className="text-2xl font-bold text-destructive mt-4">Warning! Potential Counterfeit</AlertTitle>
+            <AlertDescription className="text-muted-foreground">
               This product has been scanned before. It may be a counterfeit or already used product.
             </AlertDescription>
+            <div className="grid grid-cols-2 gap-2 mt-4 text-sm">
+              <div className="bg-destructive/5 p-3 rounded-lg">
+                <div className="font-medium text-destructive">Multiple Scans</div>
+                <div className="text-muted-foreground">Previously Verified</div>
+              </div>
+              <div className="bg-destructive/5 p-3 rounded-lg">
+                <div className="font-medium text-destructive">Action Required</div>
+                <div className="text-muted-foreground">Contact Manufacturer</div>
+              </div>
+            </div>
           </div>
         );
       case 'invalid':
       default:
         return (
           <div className="text-center space-y-4">
-            <div className="w-20 h-20 bg-gray-100 rounded-full flex items-center justify-center mx-auto">
-              <XCircle className="w-12 h-12 text-gray-600" />
+            <div className="verification-badge mx-auto mb-2 bg-muted text-muted-foreground border-muted/20">
+              <XCircle className="w-4 h-4" />
+              <span>Verification Failed</span>
             </div>
-            <AlertTitle className="text-2xl font-bold text-gray-600">Invalid Code</AlertTitle>
-            <AlertDescription className="text-gray-600">
+            <div className="w-24 h-24 bg-muted rounded-full flex items-center justify-center mx-auto">
+              <XCircle className="w-16 h-16 text-muted-foreground" />
+            </div>
+            <AlertTitle className="text-2xl font-bold text-muted-foreground mt-4">Invalid Code</AlertTitle>
+            <AlertDescription className="text-muted-foreground">
               The QR code could not be recognized as a valid product code.
             </AlertDescription>
+            <div className="grid grid-cols-2 gap-2 mt-4 text-sm">
+              <div className="bg-muted/50 p-3 rounded-lg">
+                <div className="font-medium">Try Again</div>
+                <div className="text-muted-foreground">Rescan QR Code</div>
+              </div>
+              <div className="bg-muted/50 p-3 rounded-lg">
+                <div className="font-medium">Need Help?</div>
+                <div className="text-muted-foreground">Contact Support</div>
+              </div>
+            </div>
           </div>
         );
     }
@@ -103,9 +145,9 @@ const Result = () => {
 
   const getBackgroundColor = () => {
     switch (result) {
-      case 'genuine': return 'bg-green-50';
-      case 'fake': return 'bg-red-50';
-      case 'invalid': default: return 'bg-gray-50';
+      case 'genuine': return 'bg-gradient-subtle';
+      case 'fake': return 'bg-gradient-subtle';
+      case 'invalid': default: return 'bg-gradient-subtle';
     }
   };
 
@@ -123,8 +165,8 @@ const Result = () => {
       </div>
 
       <div className="flex-1 flex flex-col items-center justify-center p-4">
-        <Card className="w-full max-w-md shadow-medium border-0 mb-6 overflow-hidden">
-          <div className={`p-6 ${result === 'genuine' ? 'bg-green-100' : result === 'fake' ? 'bg-red-100' : 'bg-gray-100'}`}>
+        <Card className="w-full max-w-md shadow-medium border-0 mb-6 overflow-hidden scanner-container">
+          <div className={`p-6 ${result === 'genuine' ? 'bg-primary/5' : result === 'fake' ? 'bg-destructive/5' : 'bg-muted/10'}`}>
             {getResultContent()}
           </div>
 
@@ -132,31 +174,31 @@ const Result = () => {
             <CardContent className="p-6">
               <div className="space-y-4">
                 <div className="flex items-center space-x-2">
-                  <Package className="w-5 h-5 text-muted-foreground" />
-                  <h3 className="font-semibold">Product Information</h3>
+                  <Package className="w-5 h-5 text-primary" />
+                  <h3 className="font-semibold text-primary">Product Information</h3>
                 </div>
                 
                 <div className="grid grid-cols-1 gap-3 text-sm">
-                  <div>
+                  <div className="p-3 bg-muted/20 rounded-lg">
                     <span className="font-medium text-muted-foreground">Product:</span>
                     <div className="font-semibold">{productData.productName}</div>
                   </div>
-                  <div>
+                  <div className="p-3 bg-muted/20 rounded-lg">
                     <span className="font-medium text-muted-foreground">Batch:</span>
                     <div className="font-semibold">{productData.batchNumber}</div>
                   </div>
-                  <div>
+                  <div className="p-3 bg-muted/20 rounded-lg">
                     <span className="font-medium text-muted-foreground">Serial Number:</span>
                     <div className="font-semibold">{productData.serialNumber}</div>
                   </div>
                   {productData.manufacturingDate && (
-                    <div>
+                    <div className="p-3 bg-muted/20 rounded-lg">
                       <span className="font-medium text-muted-foreground">Manufacturing Date:</span>
                       <div className="font-semibold">{productData.manufacturingDate}</div>
                     </div>
                   )}
                   {productData.expiryDate && (
-                    <div>
+                    <div className="p-3 bg-muted/20 rounded-lg">
                       <span className="font-medium text-muted-foreground">Expiry Date:</span>
                       <div className="font-semibold">{productData.expiryDate}</div>
                     </div>
@@ -167,12 +209,24 @@ const Result = () => {
           )}
         </Card>
 
-        <Button
-          onClick={() => navigate('/scanner')}
-          className="bg-gradient-primary hover:opacity-90 transition-smooth"
-        >
-          Scan Another Product
-        </Button>
+        <div className="flex flex-col gap-3 w-full max-w-md">
+          <Button
+            onClick={() => navigate('/scanner')}
+            className="bg-gradient-primary hover:opacity-90 transition-smooth"
+          >
+            <QrCode className="w-4 h-4 mr-2" />
+            Scan Another Product
+          </Button>
+          
+          <Button
+            variant="outline"
+            onClick={() => navigate('/consumer')}
+            className="border-primary/20 text-primary hover:bg-primary/5"
+          >
+            <Shield className="w-4 h-4 mr-2" />
+            Return to Verification Portal
+          </Button>
+        </div>
       </div>
     </div>
   );
