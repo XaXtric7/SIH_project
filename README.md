@@ -1,4 +1,4 @@
-# QR Factory - Secure Product Authentication System 🔒📦
+# QR Factory-Secure Product Authentication System 🔒📦
 
 ## Overview 🧐
 
